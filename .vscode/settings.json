@@ -1,0 +1,12 @@
+{
+  "editor.fontsize": 20,
+   "window.zoomLevel": 1,
+  "workbench.activityBar.visible": true,
+  "workbench.statusBar.visible": false,
+  "gitlens.currentLine.enabled": false,
+  "editor.formatOnSave": true,
+  "terminal.integrated.fontSize": 20,
+  "terminal.integrated.fontweight": 500,
+  "terminal.integrated.fontweightbold": 600
+ }
+}

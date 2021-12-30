@@ -1,16 +1,21 @@
-name:  Shell Commands
+name: Shell Commands
 
 # push,pull etc
-on: [push] 
+on: [push]
 
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
       - name: echo a string
-        run: echo "Hello Github Action" 
-
+        run: echo "Hello Github Action"
       - name: multiline scripts
         run: |
           node -v
           npm -v
+      - name: python script
+        run: |
+          import platform
+          print
+          (platform.processor())
+        shell: python
