@@ -16,4 +16,4 @@ jobs:
         who-to-greet: Chris
     - name: Log Greeting Time
       # use ${{ REFERENCE-TO-PREVIOUS-STEP }}
-      run: echo ${{ steps.greet }}
+      run: echo ${{ steps.greet.outputs.time }}
