@@ -1,0 +1,19 @@
+name: Action Workflow
+
+on: [push]
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+  steps:
+    - name: Simple JS action
+      id: greet
+      # uses will take reference to an action
+      # can reference branch or specific commit
+      uses: actions/hello-world-javascript-action@v1
+      # use with directive to provide inputs
+      with:
+        who-to-greet: Chris
+    - name: Log Greeting Time
+      # use ${{ REFERENCE-TO-PREVIOUS-STEP }}
+      run: echo ${{ steps.greet }}
