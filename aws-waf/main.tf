@@ -4,13 +4,12 @@ provider "aws" {
 }
 
 module "label" {
-  source = "cloudposse/label/null"
-  # Cloud Posse recommends pinning every module to a specific version
-  # version = "x.x.x"
-  namespace = "waf-demo"
-  stage     = "demo"
-  name      = "waf"
-  delimiter = "-"
+  source      = "cloudposse/label/null"
+  version     = "0.25.0"
+  namespace   = "demo"
+  environment = "dev"
+  name        = "aws-waf-demo"
+  delimiter   = "-"
 
   tags = {
     "BusinessUnit" = "demo",
@@ -18,9 +17,8 @@ module "label" {
 }
 
 module "waf" {
-  source = "cloudposse/waf/aws"
-  # Cloud Posse recommends pinning every module to a specific version
-  # version = "x.x.x"
+  source  = "cloudposse/waf/aws"
+  version = "0.0.3"
 
   geo_match_statement_rules = [
     {
@@ -42,4 +40,4 @@ module "waf" {
 
   context = module.label.context
 }
-  
+
