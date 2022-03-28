@@ -3,16 +3,28 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 
-terraform {
-  required_version = ">= 0.12.2"
+module "waf" {
+  source = "cloudposse/waf/aws"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version = "x.x.x"
 
-  backend "s3" {
-    region         = "ap-southeast-1"
-    bucket         = "${var.bucket}"
-    key            = "${var.key}"
-    dynamodb_table = "${var.dynamodb_table}"
-    profile        = ""
-    role_arn       = ""
-    encrypt        = "true"
-  }
+  geo_match_statement_rules = [
+    {
+      name     = "Block_Ukraine-Russia"
+      action   = "block"
+      priority = 10
+
+      statement = {
+        country_codes = ["UA", "RU"]
+      }
+
+      visibility_config = {
+        cloudwatch_metrics_enabled = true
+        sampled_requests_enabled   = false
+        metric_name                = "Block_Ukraine-Russia"
+      }
+    }
+  ]
+
+  context = module.label.context
 }
