@@ -34,7 +34,7 @@ module "waf" {
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
-        sampled_requests_enabled   = false
+        sampled_requests_enabled   = true
         metric_name                = "Block_Ukraine-Russia"
       }
     }
