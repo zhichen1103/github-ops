@@ -3,6 +3,20 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 
+module "label" {
+  source = "cloudposse/label/null"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version = "x.x.x"
+  namespace = "waf-demo"
+  stage     = "demo"
+  name      = "waf"
+  delimiter = "-"
+
+  tags = {
+    "BusinessUnit" = "demo",
+  }
+}
+
 module "waf" {
   source = "cloudposse/waf/aws"
   # Cloud Posse recommends pinning every module to a specific version
