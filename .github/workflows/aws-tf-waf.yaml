@@ -51,7 +51,7 @@ jobs:
       # Post Terraform plan as a comment to PR
     - name: Post Terraform plan to PR
       uses: actions/github-script@v2
-      # if: github.event_name == 'pull_request'
+      if: github.event_name == 'pull_request'
       env:
         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
         script: |
