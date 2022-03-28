@@ -9,7 +9,7 @@ on:
     - master
 
 jobs:
-  list-s3-buckets:
+  run-tf-waf-plan:
     runs-on: ubuntu-latest
     
     steps:
@@ -27,7 +27,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
 
     - name: Checkout Source Code
-      uses: happychloe22/terraform-demo@v1
+      uses: happychloe22/terraform-demo@main
            
     - name: Run Terraform Format
       run: |
