@@ -35,7 +35,4 @@ jobs:
           
     - name: list s3 buckets
       run: |
-        aws s3 ls s3://
-        
-        
-  # Added comments to force github action to run.
+        aws s3 ls s3://  
