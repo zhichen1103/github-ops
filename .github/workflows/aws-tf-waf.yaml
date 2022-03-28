@@ -41,7 +41,12 @@ jobs:
           terraform plan
       continue-on-error: false
       
-    - name: Terraform apply
+  #  - name: Terraform apply
+  #    run: |
+  #      terraform apply -auto-approve
+  #    continue-on-error: false
+      
+    - name: Terraform destroy
       run: |
-        terraform apply -auto-approve
+        terraform destroy -auto-approve
       continue-on-error: false
