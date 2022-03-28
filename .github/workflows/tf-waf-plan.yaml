@@ -27,7 +27,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
 
     - name: Checkout Source Code
-      uses: happychloe22/terraform-demo
+      uses: happychloe22/terraform-demo@v1
            
     - name: Run Terraform Format
       run: |
