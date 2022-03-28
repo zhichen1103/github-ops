@@ -1,19 +1,36 @@
-name: Action Workflow
-
-on: [push]
+name: demo list s3
+env:
+  AWS_REGION: ap-southeast-1
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+on:
+  push:
+    branches:
+    - main
 
 jobs:
-  run-github-actions:
+  list-s3:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Simple JS action
-        id: greet
-        # uses will take reference to an action
-        # can reference branch or specific commit
-        uses: actions/hello-world-javascript-action@v1
-        # use with directive to provide inputs
-        with:
-          who-to-greet: Chris
-      - name: Log Greeting Time
-        # use ${{ REFERENCE-TO-PREVIOUS-STEP }}
-        run: echo "${{ steps.greet.outputs.time }}"
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+        
+     - name: Configure AWS CLI
+       uses: actions/checkout@v2
+       uses: actions/setup-python@v2
+         with:
+           python-version: '3.7'
+           
+     - name: Install dependencies
+       run: |
+          python -m pip install --upgrade pip
+          pip install awscli
+          
+     - name: list s3 buckets
+       run: |
+          aws s3 ls s3://
