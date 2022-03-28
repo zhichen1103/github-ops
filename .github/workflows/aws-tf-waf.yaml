@@ -5,8 +5,8 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 on:
   push:
-    branches:
-    - master
+    paths:
+    - '**.tf'
 
 jobs:
   run-tf-waf-plan:
