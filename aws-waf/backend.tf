@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "chris-terraform-state"
+    bucket = "chris-terraform-remote-state"
     key = "global/waf/terraform.tfstate"
     region = "ap-southeast-1"
 
