@@ -6,7 +6,7 @@ provider "aws" {
 module "label" {
   source      = "cloudposse/label/null"
   version     = "0.25.0"
-  namespace   = "demo"
+  namespace   = "demo1"
   environment = "dev"
   name        = "aws-waf-demo"
   delimiter   = "-"
