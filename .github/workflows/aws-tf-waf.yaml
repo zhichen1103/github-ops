@@ -77,18 +77,17 @@ jobs:
       #         body: output
       #       })
 
-      - name: Terraform apply
-        id: apply
-        working-directory: ./aws-waf
-        #if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-        run: |
-          terraform apply -auto-approve
-        continue-on-error: false
+     # - name: Terraform apply
+     #   id: apply
+     #   working-directory: ./aws-waf
+     #   #if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+     #   run: |
+     #     terraform apply -auto-approve
+     #   continue-on-error: false
 
-      # - name: Terraform destroy
-      #   id: destroy
-      #   working-directory: ./aws-waf
-      #   run: |
-      #     terraform destroy -auto-approve
-      #   continue-on-error: false
-# Test pull request 
+      - name: Terraform destroy
+        id: destroy
+        working-directory: ./aws-waf
+        run: |
+          terraform destroy -auto-approve
+        continue-on-error: false
