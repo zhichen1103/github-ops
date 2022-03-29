@@ -48,7 +48,7 @@ jobs:
         id: plan
         working-directory: ./aws-waf
         run: |
-          terraform plan
+          terraform plan -no-color
         continue-on-error: false
 
       - name: print terraform plan
